@@ -48,7 +48,7 @@ function App() {
 
     setMessage("");
 
-    // Tool Call
+    // Task Summary Tool
     if (userInput.toLowerCase().includes("summary")) {
       setChat((prev) => [
         ...prev,
@@ -78,7 +78,7 @@ function App() {
 
           updated.push({
             type: "error",
-            text: err,
+            text: err.toString(),
           });
 
           return updated;
@@ -100,7 +100,7 @@ function App() {
   return (
     <div className="app">
       <div className="task-panel">
-        <h1> AI Task Manager</h1>
+        <h1>🤖 AI Task Manager</h1>
 
         <TaskForm
           task={task}
@@ -117,7 +117,12 @@ function App() {
       <div className="chat-panel">
         <h2>✨ AI Assistant</h2>
 
-        <ChatBox chat={chat} />
+        <ChatBox
+          chat={chat}
+          isTyping={false}
+          error={null}
+          onRetry={sendMessage}
+        />
 
         <ChatInput
           message={message}
@@ -129,4 +134,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

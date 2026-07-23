@@ -2,7 +2,8 @@ function TaskList({ tasks, deleteTask }) {
   if (tasks.length === 0) {
     return (
       <div className="empty-state">
-        📝 No tasks yet.<br />
+        📝 No tasks yet.
+        <br />
         Add your first task to get started!
       </div>
     );
@@ -12,10 +13,10 @@ function TaskList({ tasks, deleteTask }) {
     <ul>
       {tasks.map((task, index) => (
         <li key={index}>
-          <span>{task}</span>
+          <span>{task.title}</span>
 
           <button onClick={() => deleteTask(index)}>
-            Delete
+            🗑 Delete
           </button>
         </li>
       ))}
